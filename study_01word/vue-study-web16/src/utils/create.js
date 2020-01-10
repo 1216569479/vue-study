@@ -3,6 +3,21 @@ import Vue from 'vue'
 function create(Component, props) {
   // 组件构造函数如何获取？
   // 1.Vue.extend()
+  const Ctor = Vue.extend(Component)
+  const comp = new Ctor({propsData:props})
+  comp.$mount()
+  // 获取真实dom
+  document.body.appendChild(comp.$el)
+  // 删除事件
+  comp.remove = function() {
+    document.body.removeChild(comp.$el)
+    comp.$destroy()
+  }
+  return comp
+
+}
+
+function createC(Component, props) {
   // 2.render
   const vm = new Vue({
     // h是createElement, 返回VNode，是虚拟dom
@@ -22,5 +37,4 @@ function create(Component, props) {
   return comp
 
 }
-
-export default create
+export default {create,createC}

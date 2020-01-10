@@ -28,7 +28,8 @@
         // 派发一个input事件即可,v-model绑定的是input事件
         this.$emit('input', e.target.value)
         // 通知父级执行校验,
-        this.$parent.$emit('validate')
+        // this.$parent.$emit('validate')
+        this.dispatch('KFormItem','validate')
        
       }
     },

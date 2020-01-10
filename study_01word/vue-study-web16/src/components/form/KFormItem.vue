@@ -13,9 +13,12 @@
 <script>
 // Asyc-validator
 import Schema from "async-validator";
-
+ import emitter from '@/mixins/emitter'
 export default {
   inject: ["form"],//从祖先得到的值
+  name:'KFormItem',
+  mixins:[emitter],
+  componentName:'KFormItem',//自定义名称
   data() {
     return {
       error: "" // error是空说明校验通过
@@ -35,6 +38,10 @@ export default {
     this.$on("validate", () => {
       this.validate();
     });
+    if(this.porp){
+     this.dispatch('KForm','kkb.form.addFiled',[this])
+    }
+  
   },
   methods: {
     validate() {

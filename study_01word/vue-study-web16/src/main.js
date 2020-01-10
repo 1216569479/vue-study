@@ -8,7 +8,7 @@ import {
 Vue.config.productionTip = false
 // 事件总线
 Vue.prototype.$onemit = new Onemit()
-Vue.prototype.$create = create
+Vue.prototype.$create = create.create
 
 new Vue({
   render: h => h(App),
