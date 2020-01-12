@@ -37,7 +37,7 @@ class KVueRouter {
   }
 
   onHashChange() {
-    console.log(window.location.hash);
+    // console.log(window.location.hash);
 
     this.current = window.location.hash.slice(1)
   }
@@ -48,7 +48,7 @@ KVueRouter.install = function (_Vue) {
   Vue = _Vue;
 
   // 挂载$router
-  // 怎么获取根实例中的router选项
+  // 使用混入获取根实例中的router选项
   Vue.mixin({
     beforeCreate() {
       // 确保根实例的时候才执行
