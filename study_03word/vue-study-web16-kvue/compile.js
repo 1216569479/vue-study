@@ -57,13 +57,14 @@ class Compiler {
     // 节点是元素
     // 遍历其属性列表
     const nodeAttrs = node.attributes
+    console.log(nodeAttrs)
     Array.from(nodeAttrs).forEach(attr => {
       // 规定：指令以k-xx="oo"定义 k-text="counter"
       const attrName = attr.name // k-xx k-text
       const exp = attr.value // oo counter
       if (this.isDirective(attrName)) {
         const dir = attrName.substring(2) // xx text
-        // 执行指令
+        // 执行指令(this指compile实例)
         this[dir] && this[dir](node, exp)
       }
     })
